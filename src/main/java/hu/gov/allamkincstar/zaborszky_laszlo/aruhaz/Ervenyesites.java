@@ -3,10 +3,12 @@ package hu.gov.allamkincstar.zaborszky_laszlo.aruhaz;
 public class Ervenyesites {
     private String  megnevezes;
     private Integer osszeg;
+    private Integer kulonbozet;
 
-    public Ervenyesites(String megnevezes, Integer osszeg) {
+    public Ervenyesites(String megnevezes, Integer osszeg, Integer kulonbozet) {
         this.megnevezes = megnevezes;
         this.osszeg     = osszeg;
+        this.kulonbozet = kulonbozet;
     }
 
     public String getMegnevezes() {
@@ -23,5 +25,13 @@ public class Ervenyesites {
 
     public void setOsszeg(Integer osszeg) {
         this.osszeg = osszeg;
+    }
+
+    public Integer getKulonbozet() {
+        return kulonbozet;
+    }
+
+    public void setKulonbozet(Integer kulonbozet) {
+        this.kulonbozet = kulonbozet;
     }
 }

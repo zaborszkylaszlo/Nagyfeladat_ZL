@@ -25,7 +25,7 @@ public class Main {
         KettoHarom kettoHarom_1  = new KettoHarom();
         MegaPack   megaPack_1    = new MegaPack();
 
-        //Az összes létező termék felsorololása:
+        //Az összes létező termék felsorolása:
         Aru        teliszalami   = new Aru("téliszalámi", "té", kettoHarom_1.getMegnevezes(), 2000);
         Aru        gumikacsa     = new Aru("gumikacsa", "gu", kettoHarom_1.getMegnevezes(), 3000);
         Aru        uborka        = new Aru("uborka", "ub", megaPack_1.getMegnevezes(), 2800);
@@ -121,12 +121,15 @@ public class Main {
             KettoHarom kettoHarom_2   = new KettoHarom(lista.getDarabszam(), lista.getTermek().getEgysegar());
             MegaPack   megaPack_2     = new MegaPack((lista.getDarabszam()));
             Integer    kedvezmenyesar = 0;
+            Integer    kulonbozet     = 0;
             if (lista.getTermek().getKedvezmeny() == kettoHarom_2.getMegnevezes()) {
                 kedvezmenyesar = lista.getOsszesen() - kettoHarom_2.getKedvezmenyosszege();
+                kulonbozet     = lista.getOsszesen() - kedvezmenyesar;
             }
             else {
                 if (lista.getTermek().getKedvezmeny() == megaPack_2.getMegnevezes()) {
                     kedvezmenyesar = lista.getOsszesen() - megaPack_2.getKedvezmenyosszege();
+                    kulonbozet     = lista.getOsszesen() - kedvezmenyesar;
                 }
             }
 
@@ -135,7 +138,8 @@ public class Main {
                     ". Egységár: " + lista.getTermek().getEgysegar() +
                     ". Összesen ár: " + lista.getOsszesen() +
                     ". Kedvezmény neve: " + lista.getTermek().getKedvezmeny() +
-                    ". Kedvezményes ár: " + kedvezmenyesar);
+                    ". Lehetséges kedvezményes ár: " + kedvezmenyesar +
+                    ". Különbözet: " + kulonbozet);
         }
 
         //Példa a Set-re, INNEN:
@@ -204,25 +208,29 @@ public class Main {
             }
         }
 
-        Ervenyesites ervenyesites = new Ervenyesites("semmi", 0); //Az érvényesíthető kedvezmény.
-        Ervenyesites vegosszeg    = new Ervenyesites("Összesen", 0);
+        Ervenyesites ervenyesites = new Ervenyesites("semmi", 0, 0); //Az érvényesíthető kedvezmény.
+        Ervenyesites vegosszeg    = new Ervenyesites("Összesen", 0, 0);
 
         System.out.println("A pénztárnál az alábbi tételek szerepelnek: ");
         for (Rendeles lista : penztar.getKosar()) {
             KettoHarom kettoharom     = new KettoHarom(lista.getDarabszam(), lista.getTermek().getEgysegar());
             MegaPack   megapack       = new MegaPack(lista.getDarabszam());
             Integer    kedvezmenyesar = 0;
+            Integer    kulonbozet     = 0;
             if (lista.getTermek().getKedvezmeny() == kettoharom.getMegnevezes()) {
                 kedvezmenyesar = lista.getOsszesen() - kettoharom.getKedvezmenyosszege();
+                kulonbozet     = lista.getOsszesen() - kedvezmenyesar;
             }
             else {
                 if (lista.getTermek().getKedvezmeny() == megapack.getMegnevezes()) {
                     kedvezmenyesar = lista.getOsszesen() - megapack.getKedvezmenyosszege();
+                    kulonbozet     = lista.getOsszesen() - kedvezmenyesar;
                 }
             }
             if (kedvezmenyesar > ervenyesites.getOsszeg()) {
                 ervenyesites.setMegnevezes(lista.getTermek().getMegnevezes());
                 ervenyesites.setOsszeg(kedvezmenyesar);
+                ervenyesites.setKulonbozet(kulonbozet);
             }
             vegosszeg.setOsszeg(vegosszeg.getOsszeg() + lista.getOsszesen());
 
@@ -231,14 +239,15 @@ public class Main {
                     ". Egységár: " + lista.getTermek().getEgysegar() +
                     ". Összesen ár: " + lista.getOsszesen() +
                     ". Kedvezmény neve: " + lista.getTermek().getKedvezmeny() +
-                    ". Kedvezményes ár: " + kedvezmenyesar);
+                    ". Lehetséges kedvezményes ár: " + kedvezmenyesar +
+                    ". Különbözet: " + kulonbozet);
         }
 
-        Integer kedvVegosszeg = vegosszeg.getOsszeg() - ervenyesites.getOsszeg();
+        Integer kedvVegosszeg    = vegosszeg.getOsszeg() - ervenyesites.getKulonbozet(); //ervenyesites.getOsszeg();
 
         System.out.println("A számla tartalma: \n" +
                 "Összesen: " + vegosszeg.getOsszeg() + " Ft \n" +
-                "Érvényesíthető kedvezmény összege " + ervenyesites.getOsszeg() + " Ft (Melyik termékből: " + ervenyesites.getMegnevezes() + ") \n" +
+                "Érvényesíthető kedvezmény összege " + ervenyesites.getKulonbozet() + " Ft (Melyik termékből: " + ervenyesites.getMegnevezes() + ") \n" +
                 "Fizetendő: " + kedvVegosszeg + " Ft");
     }
 }
