@@ -1,5 +1,6 @@
 package hu.gov.allamkincstar.zaborszky_laszlo.aruhaz;
 
+//Ebben az osztályban dől el, hogy melyik áruból érvényesíthetjük a kedvezményt.
 public class Ervenyesites {
     private String  megnevezes;
     private Integer osszeg;

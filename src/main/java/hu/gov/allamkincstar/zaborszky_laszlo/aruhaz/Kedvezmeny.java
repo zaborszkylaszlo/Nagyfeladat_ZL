@@ -1,5 +1,6 @@
 package hu.gov.allamkincstar.zaborszky_laszlo.aruhaz;
 
+//Az osztály az adott kedvezmény meghatározásához szükséges. Absztrakt osztály, mert a konkrét számítási mód itt még nem ismert.
 public abstract class Kedvezmeny {
     private String  megnevezes; //A kedvezmény megnevezése.
     private Integer darabszam;  //A kedvezmény kiszámításához szükséges tudni, hogy hány db termékről van szó.
@@ -22,7 +23,7 @@ public abstract class Kedvezmeny {
 
     /*
     A megnevezesnek megfelelő kedvezmény összegének a kiszámítása: hány forint a kedvezmény?
-    Ezt kell majd az összárból levonni.
+    A termék összárából ezt kivonva megkapjuk a kedvezményes árat, ez fog beszámítani az új összárba.
     */
     public abstract Integer getKedvezmenyosszege();
 }

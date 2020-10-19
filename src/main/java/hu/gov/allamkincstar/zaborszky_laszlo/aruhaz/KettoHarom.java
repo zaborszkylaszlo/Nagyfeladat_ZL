@@ -1,5 +1,6 @@
 package hu.gov.allamkincstar.zaborszky_laszlo.aruhaz;
 
+//"Kettőt fizet hármat kap!" - kedvezmény.
 public class KettoHarom extends Kedvezmeny {
     private       Integer egysegar;           //Ennél a kedvezménytípusnál az egységárból számítjuk a kedvezmény mértékét.
     private final String  megnevezes = "2=3"; //A kedvezménytípus neve.

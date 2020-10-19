@@ -1,5 +1,6 @@
 package hu.gov.allamkincstar.zaborszky_laszlo.aruhaz;
 
+//A termék jellemzői. Ezt példányosítva akármelyik belőle származó árut megjelenítheti.
 public class Termek {
     private String  megnevezes; //A termék (áru) megnevezése.
     private String  kodja;      //A termék (áru) kódja (rövid neve). (Ne kelljen annyit gépelni...)

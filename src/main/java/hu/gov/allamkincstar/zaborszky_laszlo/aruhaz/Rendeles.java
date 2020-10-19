@@ -1,5 +1,6 @@
 package hu.gov.allamkincstar.zaborszky_laszlo.aruhaz;
 
+//Erre az osztályra tekinthetünk úgy is, mint egy bevásárló listára: miből mennyit kell venni.
 public class Rendeles {
     private Integer darabszam;
     private Termek  termek = new Termek();

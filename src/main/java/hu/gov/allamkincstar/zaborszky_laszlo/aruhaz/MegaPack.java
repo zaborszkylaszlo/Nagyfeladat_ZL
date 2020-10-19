@@ -1,5 +1,6 @@
 package hu.gov.allamkincstar.zaborszky_laszlo.aruhaz;
 
+//"Megapack" - kedvezmény
 public class MegaPack extends Kedvezmeny {
     private final String megnevezes = "megapack"; //A kedvezménytípus neve.
 

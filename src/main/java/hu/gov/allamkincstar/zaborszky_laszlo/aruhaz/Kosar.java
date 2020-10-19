@@ -3,6 +3,7 @@ package hu.gov.allamkincstar.zaborszky_laszlo.aruhaz;
 import java.util.ArrayList;
 import java.util.List;
 
+//A kosár osztálya, ide rakjuk a megvásárolni kívánt árut, annyi darabot, amennyire szükségünk van.
 public class Kosar {
     private List<Rendeles> kosar = new ArrayList<>(); //A kosárba a rendelések kerülnek. A rendelés: termék és a darabszáma.
     private String         termeknev;                 //A kosárból is megtudhatjuk a belerakott rendelésen keresztül a termék neve.
