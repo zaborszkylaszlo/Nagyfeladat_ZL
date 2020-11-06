@@ -8,7 +8,6 @@ import java.util.Set;
 public class Main {
     public static void main(String[] args) {
         //A szükséges adatok bekérése a billentyűzetről:
-        Scanner    darabszam     = new Scanner(System.in);
         Scanner    eldont        = new Scanner(System.in);
         Scanner    valaszt       = new Scanner(System.in);
 
@@ -85,6 +84,7 @@ public class Main {
                 javitsd = Boolean.FALSE;
                 try {
                     System.out.println("Írja be a kiválasztott áru mennyiségét!");
+                    Scanner darabszam = new Scanner(System.in);
                     Integer db = darabszam.nextInt();
                     mennyiseg  = db;
                     if (mennyiseg <= 0) {
@@ -227,7 +227,7 @@ public class Main {
                     kulonbozet     = lista.getOsszesen() - kedvezmenyesar;
                 }
             }
-            if (kedvezmenyesar > ervenyesites.getOsszeg()) {
+            if (kulonbozet > ervenyesites.getOsszeg()) { //kedvezmenyesar > ervenyesites.getOsszeg()
                 ervenyesites.setMegnevezes(lista.getTermek().getMegnevezes());
                 ervenyesites.setOsszeg(kedvezmenyesar);
                 ervenyesites.setKulonbozet(kulonbozet);
